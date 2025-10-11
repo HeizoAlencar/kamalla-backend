@@ -1,17 +1,17 @@
 
 services:
-  backend:
+  api:
     container_name: "kamalla_API"
     build: .
-    command: bun run start:dev
+    command: sh -c "bunx prisma migrate dev --name docker-migrate && bun run --bun start:dev"
     environment:
       PORT: 3333
       DATABASE_URL: "postgresql://user:pass@database:5432/kamalla?schema=public"
     ports:
       - "3333:3333"
     volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
+      - .:/usr/app
+      - /usr/app/node_modules
     depends_on:
       - database
     restart: always 
