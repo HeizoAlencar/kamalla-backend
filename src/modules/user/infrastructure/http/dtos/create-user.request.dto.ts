@@ -10,12 +10,18 @@ export class CreateUserRequestDTO  {
     @cv.IsString({message:"O Nome deve ser uma string."})
     @cv.MinLength(3,{message:"O nome deve ter no minímo 3 caracteres."})
     @cv.MaxLength(100,{message:"O nome deve ter no maximo 100 caracteres."})
-    name: string;
-    @cv.IsNotEmpty({message:"O apelido é obrigatorio."})    
-    @cv.IsString({message:"O apelido deve ser uma string."})
-    @cv.MinLength(2,{message:"O apelido deve ter no minímo 2 caracteres."})
-    @cv.MaxLength(50,{message:"O apelido deve ter no maximo 50 caracteres."})      
-    nickname: string;
+    firstName: string;
+    @cv.IsNotEmpty({message:"O nome de usuario é obrigatorio."})    
+    @cv.IsString({message:"O nome de usuario deve ser uma string."})
+    @cv.MinLength(2,{message:"O nome de usuario deve ter no minímo 2 caracteres."})
+    @cv.MaxLength(50,{message:"O nome de usuario deve ter no maximo 50 caracteres."})      
+    username: string;
+    @cv.IsNotEmpty({message:"O lastName é obrigatorio."})    
+    @cv.IsString({message:"O lastName deve ser uma string."})
+    @cv.MinLength(3,{message:"O lastName deve ter no minímo 3 caracteres."})
+    @cv.MaxLength(100,{message:"O lastName deve ter no maximo 100 caracteres."})
+    lastName: string;
+
     @cv.IsNotEmpty({message:"O email é obrigatorio."})
     @cv.IsEmail()
     email: string;
@@ -32,7 +38,7 @@ export class CreateUserRequestDTO  {
     @cv.IsDateString({}, {message:"A data de nascimento deve ser uma string de data ISO."})
     birthDate?: Date | null;
     @cv.IsOptional()
-    userRole?: UserRole | null;
+    userRole: UserRole ;
     @cv.IsOptional()
     profilePicture?: string | null;
 

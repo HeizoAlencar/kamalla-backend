@@ -14,9 +14,9 @@ export class UserEntity  {
     private readonly userRole: UserRole;
     private personName: PersonName;
     private emailVerified: boolean;
-    private gender: Gender | null;
-    private birthDate: Date | null;
-    private profilePicture: string | null;
+    private gender?: Gender | null | undefined;
+    private birthDate?: Date | null  | undefined;
+    private profilePicture?: string | null;
     private deletedAt: Date | null;
     private updatedAt: Date;
     private readonly createdAt: Date;
@@ -31,9 +31,9 @@ export class UserEntity  {
       emailVerified: boolean,
       createdAt: Date,
       updatedAt: Date,
-      gender: Gender | null,
-      birthDate: Date | null,
-      profilePicture: string | null,
+      gender?: Gender | null,
+      birthDate?: Date | null,
+      profilePicture?: string | null,
       deletedAt: Date | null
     }) {
         this.id = input.id 
@@ -59,9 +59,9 @@ export class UserEntity  {
         passwordHash: string,
         personName: PersonName,
         userRole: UserRole,
-        gender: Gender | null,
-        birthDate: Date | null,
-        profilePicture: string | null,
+        gender?: Gender | null | undefined,
+        birthDate?: Date | null,
+        profilePicture?: string | null,
       }
     ): UserEntity {
 
@@ -70,8 +70,11 @@ export class UserEntity  {
         }
 
         const now = new Date();
+
+
+       
+
       const user = new UserEntity({
-        
         emailVerified:false,
         createdAt: now,
         updatedAt: now,
@@ -93,9 +96,9 @@ export class UserEntity  {
         emailVerified: boolean;
         createdAt: Date;
         updatedAt: Date;
-        gender: Gender | null;
-        birthDate: Date | null;
-        profilePicture: string | null;
+        gender?: Gender | null;
+        birthDate?: Date | null;
+        profilePicture?: string | null;
         deletedAt: Date | null;
     }): UserEntity {
 

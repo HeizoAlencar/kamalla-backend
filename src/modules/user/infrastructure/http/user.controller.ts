@@ -7,6 +7,8 @@ import { ExceptionHandler } from '@/shared/infrastructure/exception-handlers/exc
 import { AllowAnonymous } from '@thallesp/nestjs-better-auth';
 import { BusinessRuleException } from '@/shared/domain/exceptions/business-rule.exception';
 import { BusinessRuleExceptionHandler } from '@/shared/infrastructure/exception-handlers/business-rule.exception.handler';
+import { UserAlreadyExistsException } from '../../application/exceptions/user-already-exists.exception';
+import { UserAlreadyExistsExceptionHandler } from '../exception-handlers/user-already-exists.exception.handler';
 
 @Controller('users')
 export class UserController {
@@ -20,6 +22,7 @@ export class UserController {
     
     private registerHandlers(){
       this.handlers.set(BusinessRuleException.name, new BusinessRuleExceptionHandler());
+      this.handlers.set(UserAlreadyExistsException.name, new UserAlreadyExistsExceptionHandler)
     }
     
     private handleException(exception: Error): void {
@@ -69,4 +72,4 @@ export class UserController {
     //     return this.userService.deleteUser(id);
     }
 
-}
+

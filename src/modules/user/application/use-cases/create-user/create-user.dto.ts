@@ -7,9 +7,8 @@ export interface CreateUserDTO  {
     username: string;
     email: string;
     password: string;
-    emailVerified: boolean;
-    gender: Gender | null ;
-    birthDate: Date | null;
+    gender?: Gender | null | undefined ;
+    birthDate?: Date | null | undefined;
     userRole: UserRole ;
-    profilePicture: string | null;
+    profilePicture?: string | null;
 }
