@@ -1,8 +1,8 @@
 // Schemas
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/database/generated"
+  provider = "prisma-client-js"
+  output   = "../src/database/generated/prisma"
 }
 
 datasource db {
@@ -33,7 +33,7 @@ enum ClassRole {
   COORDINATOR
 }
 
-enum UserType {
+enum UserRole {
   STUDENT
   TEACHER
   ADMIN
@@ -55,15 +55,15 @@ enum QuestionType {
 
 model User {
   id              String         @id @default(cuid())
-  name            String
-  lastName        String?
-  nickname        String?        @unique
+  firstName       String     
+  lastName        String     
+  username        String        @unique
   email           String         @unique
   emailVerified   Boolean
   password        String?
   gender          Gender?
   birthDate       DateTime?
-  type            UserType?      @default(STUDENT)
+  userRole        UserRole?      @default(STUDENT)
   profilePicture  String?
   createdAt       DateTime       @default(now())
   updatedAt       DateTime       @updatedAt

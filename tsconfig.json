@@ -20,6 +20,15 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@/*": ["src/*"],
+      "@database/*": ["src/database/generated/*"],
+      "@modules/*": ["src/modules/*"],
+      "@classes/*": ["src/shared/application/classes/*"],
+      "@exceptions/*": ["src/shared/domain/exceptions/*"],
+      "@repositories/*": ["src/repositories/*"],
+      "@database/prisma/models*": ["src/database/generated/prisma/models"],
+    }
   }
 }

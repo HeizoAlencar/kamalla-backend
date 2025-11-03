@@ -8,14 +8,13 @@ RUN apt-get install -y openssl
 
 COPY package.json bun.lock ./
 
-RUN bun install --frozen-lockfile
+RUN bun install 
 
 COPY . .
 
 ENV DATABASE_URL="postgresql://user:pass@database:5432/kamalla?schema=public"
 
 RUN bunx prisma generate 
-
 
 ENV PORT=3333
 
